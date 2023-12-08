@@ -4,8 +4,10 @@ import React from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
 import DetailLink from './DetailLink';
+import { useRouter } from 'next/navigation';
 
 function ListItem(props) {
+  let router = useRouter();
   let { item } = props;
 
   const handleDeleteClick = async (_id) => {
@@ -14,9 +16,7 @@ function ListItem(props) {
       method : 'DELETE',
       body: _id.toString()
     })
-    if (response) {
-      alert('삭제완료 새로고침 ㄱㄱ');
-    }
+    router.refresh();
   }
   
   return (

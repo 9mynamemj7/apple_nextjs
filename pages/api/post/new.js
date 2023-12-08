@@ -11,8 +11,8 @@ export default async function handler(request, response) {
       return response.status(500).json('none title');
     }
     result = await db.collection('post').insertOne(request.body);
-    return response.status(200).json('성공');
+    response.redirect(302, '/list');
   } else {
-    return response.status(500).json('실패');
+    response.status(500).json('실패');
   }
 }
